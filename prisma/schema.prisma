@@ -14,12 +14,12 @@ datasource db {
 }
 
 model User {
-  id      String @id @default(uuid())
-  name    String
-  email   String @unique
-  pasword String
-  photo   String
-  posts   Post[]
+  id       String @id @default(uuid())
+  name     String
+  email    String @unique
+  password String
+  photo    String
+  posts    Post[]
 
   @@map("users")
 }
