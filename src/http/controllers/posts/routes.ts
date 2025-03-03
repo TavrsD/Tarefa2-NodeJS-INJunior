@@ -1,4 +1,6 @@
 import { FastifyInstance } from "fastify";
+import { create } from "./create";
 
-export function usersRoutes (app: FastifyInstance) {
+export function postRoutes (app: FastifyInstance) {
+    app.post('/posts', create)
 }
