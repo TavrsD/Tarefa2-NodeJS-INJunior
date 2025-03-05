@@ -3,6 +3,7 @@ import { register } from "./register";
 import { getAll } from "./get-all";
 import { deleteUser } from "./delete";
 import { get } from "./get";
+import { update } from "./update";
 
 export function userRoutes (app: FastifyInstance) {
     app.post('/users', register)
@@ -12,5 +13,5 @@ export function userRoutes (app: FastifyInstance) {
 
     app.delete ('/users/:userId', deleteUser)
 
-
+    app.patch('/users/:userId', update)
 }
