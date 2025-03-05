@@ -3,6 +3,15 @@ import { Post, Prisma } from "@prisma/client";
 import { PostsRepository } from "../posts-repository";
 
 export class PrismaPostsRepository implements PostsRepository{
+    async findByUserId(userId: string): Promise<Post[]> {
+        const posts = await prisma.post.findMany({
+            where: {
+                userId
+            }
+        })
+        return posts
+    }
+
     async findById(id: string): Promise<Post | null> {
         const post = await prisma.post.findUnique({
             where: {

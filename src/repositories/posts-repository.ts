@@ -5,4 +5,5 @@ export interface PostsRepository {
     findAll():Promise<Post[]>
     delete(id:string): Promise<Post | null>
     findById(id:string): Promise<Post | null>
+    findByUserId(userId:string): Promise<Post[]>
 }
