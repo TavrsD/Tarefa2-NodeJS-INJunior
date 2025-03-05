@@ -3,6 +3,15 @@ import { Post, Prisma } from "@prisma/client";
 import { PostsRepository } from "../posts-repository";
 
 export class PrismaPostsRepository implements PostsRepository{
+    async findById(id: string): Promise<Post | null> {
+        const post = await prisma.post.findUnique({
+            where: {
+                id
+            }
+        })
+        return post
+    }
+    
     async delete(id: string): Promise<Post | null> {
         const post = await prisma.post.delete({
             where: {
