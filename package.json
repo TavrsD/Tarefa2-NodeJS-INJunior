@@ -20,7 +20,9 @@
   },
   "homepage": "https://github.com/TavrsD/Tarefa1-NodeJS-INJunior#readme",
   "dependencies": {
+    "@fastify/cookie": "11.0.2",
     "@fastify/cors": "11.0.0",
+    "@fastify/jwt": "9.0.4",
     "@prisma/client": "6.4.1",
     "@types/node": "22.13.8",
     "bcryptjs": "3.0.2",
