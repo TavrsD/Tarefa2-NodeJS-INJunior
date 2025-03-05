@@ -12,10 +12,13 @@ export async function deletePost(request: FastifyRequest, reply: FastifyReply) {
     const { id } = deleteParamsSchema.parse(request.params)
 
     try {
+        const userId = request.user.sub
+
         const prismaPostsRepository = new PrismaPostsRepository()
         const deletePostUseCase = new DeletePostUseCase(prismaPostsRepository)
         const post = await deletePostUseCase.execute({
-            id
+            id,
+            userId
         })
 
         return reply.status(204).send({ post })

@@ -4,6 +4,7 @@ import { ResourceNotFound } from "./errors/resource-not-found-error"
 
 interface DeletePostUseCaseRequest {
     id: string
+    userId: string
 }
 
 interface DeletePostUseCaseResponse {
