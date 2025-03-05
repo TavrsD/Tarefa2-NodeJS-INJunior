@@ -14,7 +14,7 @@ export function postRoutes (app: FastifyInstance) {
     app.get ('/posts/:id', get)
     app.get ('/user-posts/:userId', getByUser)
     
-    app.delete ('/posts/:id', deletePost)
+    app.delete ('/posts/:id',{onRequest: [verifyJWT]}, deletePost)
     
     app.patch('/posts/:id', update)
 }
