@@ -18,7 +18,6 @@ export async function deleteUser(request: FastifyRequest, reply: FastifyReply) {
             userId
         })
 
-        //204 - cod de delecao
         return reply.status(204).send({ user })
     } catch (err) {
         if (err instanceof ResourceNotFound) {
