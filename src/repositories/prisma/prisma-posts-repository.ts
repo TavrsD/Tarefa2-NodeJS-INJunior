@@ -3,6 +3,15 @@ import { Post, Prisma } from "@prisma/client";
 import { PostsRepository } from "../posts-repository";
 
 export class PrismaPostsRepository implements PostsRepository{
+    async delete(id: string): Promise<Post | null> {
+        const post = await prisma.post.delete({
+            where: {
+                id
+            }
+        })
+        return post
+    }
+    
     async findAll(): Promise<Post[]> {
         const posts = await prisma.post.findMany()
         return posts
