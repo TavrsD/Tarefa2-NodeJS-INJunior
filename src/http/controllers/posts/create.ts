@@ -9,10 +9,10 @@ export async function create(request: FastifyRequest, reply: FastifyReply) {
     const createBodySchema = z.object({
         title: z.string(),
         content: z.string(),
-        userId: z.string().uuid()
     })
 
-    const {title, content, userId} = createBodySchema.parse(request.body)
+    const { title, content } = createBodySchema.parse(request.body)
+    const userId = request.user.sub
 
     try {
         const prismaPostsRepository = new PrismaPostsRepository()
