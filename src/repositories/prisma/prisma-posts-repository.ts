@@ -1,8 +1,12 @@
 import { prisma } from "@/lib/prisma";
-import { Prisma } from "@prisma/client";
+import { Post, Prisma } from "@prisma/client";
 import { PostsRepository } from "../posts-repository";
 
 export class PrismaPostsRepository implements PostsRepository{
+    async findAll(): Promise<Post[]> {
+        const posts = await prisma.post.findMany()
+        return posts
+    }
 
     async create(data: Prisma.PostUncheckedCreateInput){
         const dateTime = new Date()
