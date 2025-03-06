@@ -1,6 +1,7 @@
 import { PrismaPostsRepository } from "@/repositories/prisma/prisma-posts-repository"
 import { DeletePostUseCase } from "@/use-cases/delete-post-use-case"
 import { ResourceNotFound } from "@/use-cases/errors/resource-not-found-error"
+import { Unauthorized } from "@/use-cases/errors/unauthorized-error"
 import { FastifyRequest, FastifyReply } from "fastify"
 import { z } from "zod"
 
@@ -26,6 +27,10 @@ export async function deletePost(request: FastifyRequest, reply: FastifyReply) {
         if (err instanceof ResourceNotFound) {
             return reply.status(404).send({message: err.message})
         }
+        
+        if (err instanceof Unauthorized) {
+                return reply.status(401).send({message: err.message})
+            }
         throw err
     }
 }
